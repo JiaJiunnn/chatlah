@@ -17,10 +17,10 @@ CORS(app)
 class Advertisement(Resource):
     def get(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('senderId', type=str)
+        parser.add_argument('title', type=str)
         args = parser.parse_args()
-        if args["senderId"]:
-            return json.loads(json_util.dumps(mongo.db.Advertisement.find({"senderId": args["senderId"]})))
+        if args["title"]:
+            return json.loads(json_util.dumps(mongo.db.Advertisement.find({"title": args["title"]})))
         else:
             return json.loads(json_util.dumps(mongo.db.Advertisement.find()))
 
