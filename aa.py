@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask_restful import Resource, Api, reqparse
+from flask_cors import CORS
 
 from bson import json_util, ObjectId
 import json
@@ -11,6 +12,7 @@ api = Api(app)
 app.config["MONGO_DBNAME"] = 'kindestproject'
 app.config["MONGO_URI"] = "mongodb://aa:000000a@ds255768.mlab.com:55768/kindestproject"
 mongo = PyMongo(app)
+CORS(app)
 
 class Advertisement(Resource):
     def get(self):
